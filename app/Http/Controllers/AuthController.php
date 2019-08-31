@@ -18,7 +18,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials, $request->has('remember'))) {
             return response()->json(Auth::user(), Response::HTTP_OK);
         } else {
-            return response()->json(['error' => '用户名或密码错误'], Response::HTTP_FORBIDDEN);
+            return response()->json(['error' => '用户名或密码错误'], Response::HTTP_FORBIDDEN)->cookie('');
         }
     }
 

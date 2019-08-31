@@ -17,6 +17,13 @@ class Post extends Model
     ];
 
     /**
+     * Get the category associated with the post.
+     */
+    public function category() {
+        return $this->belongsTo(Category::class);
+    }
+
+    /**
      * Get the comments associated with the post.
      */
     public function comments() {
