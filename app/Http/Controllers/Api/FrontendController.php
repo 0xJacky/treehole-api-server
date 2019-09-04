@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Models\Category;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,12 +18,12 @@ class FrontendController extends Controller
 
     public function home(Post $post, Category $category): JsonResponse
     {
-        $result['categories'] = $category->get();
-        $result['posts'] = $post->with('category')
-            ->orderBy('id', 'desc')
+        $data['categories'] = $category->orderBy('created_at', 'asc')->get();
+        $data['posts'] = $post->with('category')
+            ->orderBy('created_at', 'desc')
             ->paginate(10);
 
-        return response()->json($result, Response::HTTP_OK);
+        return response()->json($data, Response::HTTP_OK);
     }
 
 }

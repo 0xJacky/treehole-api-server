@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Webpatser\Uuid\Uuid;
 
-class Category extends Model
+class Report extends Model
 {
     public $incrementing = false;
     public static function boot()
@@ -21,11 +21,17 @@ class Category extends Model
      * @var array
      */
     protected $fillable = [
-        'name'
+        'post_id',
+        'comment_id'
     ];
 
-    public function posts()
+    public function post()
     {
-        return $this->hasMany(Post::class);
+        return $this->hasOne(Post::class, 'id', 'post_id');
+    }
+
+    public function comment()
+    {
+        return $this->hasOne(Comment::class, 'id', 'comment_id');
     }
 }

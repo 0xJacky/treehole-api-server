@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Models\Category;
 use Illuminate\Http\JsonResponse;
@@ -11,9 +11,9 @@ class CategoryController extends Controller
 {
     public function get_list(Category $category): JsonResponse
     {
-        $result = $category->get();
+        $data = $category->orderBy('created_at', 'asc')->get();
 
-        return response()->json($result, Response::HTTP_OK);
+        return response()->json($data, Response::HTTP_OK);
     }
 
     public function store(Request $request, Category $category): JsonResponse
@@ -28,10 +28,10 @@ class CategoryController extends Controller
             $c->save();
             return response()->json(['msg' => '保存成功'], Response::HTTP_OK);
         } else {
-            $result = $category->create([
+            $data = $category->create([
                 'name' => $request['name']
             ]);
-            return response()->json(['id' => $result['id']], Response::HTTP_CREATED);
+            return response()->json(['id' => $data['id']], Response::HTTP_CREATED);
         }
     }
 }

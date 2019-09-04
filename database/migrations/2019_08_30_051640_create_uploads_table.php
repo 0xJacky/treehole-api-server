@@ -14,7 +14,7 @@ class CreateUploadsTable extends Migration
     public function up()
     {
         Schema::create('uploads', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->uuid('id')->primary()->unique();
             $table->string('local_path', 255);
             $table->string('oss_path', 255);
             $table->timestamps();
