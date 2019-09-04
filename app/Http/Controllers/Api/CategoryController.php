@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Category;
+use Dingo\Api\Routing\Helpers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class CategoryController extends Controller
 {
+    use Helpers;
+
     public function get_list(Category $category): JsonResponse
     {
         $data = $category->orderBy('created_at', 'asc')->get();
@@ -33,5 +36,21 @@ class CategoryController extends Controller
             ]);
             return response()->json(['id' => $data['id']], Response::HTTP_CREATED);
         }
+    }
+
+    public function destroy(Request $request)
+    {
+        $this->validate($request, [
+            'id' => 'required|uuid'
+        ]);
+
+        if ($this->user()) {
+            Category::destroy($request['id']);
+        } else {
+            return response()->json(['msg' => '无权访问'], Response::HTTP_FORBIDDEN);
+        }
+
+        return response()->json(['msg' => '删除成功'], Response::HTTP_OK);
+
     }
 }

@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use Dingo\Api\Routing\Helpers;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -11,6 +12,8 @@ use Auth;
 
 class PostController extends Controller
 {
+    use Helpers;
+
     public function __construct()
     {
         //
@@ -58,7 +61,7 @@ class PostController extends Controller
             'id' => 'required|uuid'
         ]);
 
-        if (Auth::user()) {
+        if ($this->user()) {
             $post->destroy($request['id']);
         } else {
             return response()->json(['msg' => '无权访问'], Response::HTTP_FORBIDDEN);

@@ -35,10 +35,6 @@ $api->version('v1', [
         $api->get('post', 'PostController@get')
             ->name('api.post.get');
 
-        // 获取文章评论
-        $api->get('comment', 'CommentController@get')
-            ->name('api.comment.get');
-
         // reCAPTCHA 保护
         $api->group(['middleware' => 'recaptcha'], function ($api) {
             // 发表文章
@@ -65,7 +61,7 @@ $api->version('v1', [
             $api->get('user', 'UserController@info')
                 ->name('api.auth.info');
 
-            // 获取用户信息
+            // 修改用户信息
             $api->post('user', 'UserController@update')
                 ->name('api.auth.update_user');
 
@@ -76,10 +72,6 @@ $api->version('v1', [
             // 删除评论
             $api->delete('comment', 'CommentController@destroy')
                 ->name('api.auth.delete_comment');
-
-            // 添加分类
-            $api->post('category', 'CategoryController@store')
-                ->name('api.auth.add_category');
 
             // 添加或修改分类
             $api->post('category', 'CategoryController@store')

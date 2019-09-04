@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Comment;
 use App\Models\Post;
+use Dingo\Api\Routing\Helpers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,6 +14,8 @@ use Auth;
 
 class CommentController extends Controller
 {
+    use Helpers;
+
     public function __construct()
     {
         //
@@ -41,24 +44,13 @@ class CommentController extends Controller
 
     }
 
-    public function get(Request $request, Post $post): JsonResponse
-    {
-        $comments = $post->find($request['post_id'])
-            ->comments()
-            ->orderBy('created_at', 'desc')
-            ->paginate(10);
-
-        return response()->json($comments, Response::HTTP_OK);
-
-    }
-
     public function destroy(Request $request): JsonResponse
     {
         $this->validate($request, [
             'id' => 'required|uuid'
         ]);
 
-        if (Auth::user()) {
+        if ($this->user()) {
             Comment::destroy($request['id']);
         } else {
             return response()->json(['msg' => '无权访问'], Response::HTTP_FORBIDDEN);
