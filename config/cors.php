@@ -13,7 +13,7 @@ return [
     */
 
     'supportsCredentials' => false,
-    'allowedOrigins' => ['https://treehole.jackyu.cn'],
+    'allowedOrigins' => [env('CORS_ALLOWED_ORIGIN')],
     'allowedOriginsPatterns' => [],
     'allowedHeaders' => ['*'],
     'allowedMethods' => ['*'],
