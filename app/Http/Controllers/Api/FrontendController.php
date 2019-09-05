@@ -11,15 +11,13 @@ use App\Models\Post;
 
 class FrontendController extends Controller
 {
-    public function __construct()
-    {
-        //
-    }
 
     public function home(Post $post, Category $category): JsonResponse
     {
         $data['categories'] = $category->orderBy('created_at', 'asc')->get();
-        $data['posts'] = $post->with('category')
+
+
+        $data['posts'] = $post->with('category', 'upload')
             ->orderBy('created_at', 'desc')
             ->paginate(10);
 

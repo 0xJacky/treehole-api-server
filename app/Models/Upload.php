@@ -21,8 +21,6 @@ class Upload extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
-        'local_path',
         'oss_path'
     ];
 

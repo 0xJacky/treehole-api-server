@@ -24,8 +24,19 @@ class Post extends Model
      */
     protected $fillable = [
         'content',
-        'category_id'
+        'category_id',
+        'upload_uuid'
     ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'upload_uuid',
+    ];
+
 
     /**
      * Get the category associated with the post.
@@ -43,15 +54,10 @@ class Post extends Model
         return $this->hasMany(Comment::class);
     }
 
-    public function getComments()
-    {
-        return $this->comments()->get()->groupBy('parent');
-    }
-
     /**
      * Get the upload record associated with the post.
      */
-    public function upload_id()
+    public function upload()
     {
         return $this->hasOne(Upload::class, 'id', 'upload_id');
     }

@@ -49,6 +49,9 @@ $api->version('v1', [
             $api->post('report', 'ReportController@store')
                 ->name('api.recaptcha.report');
 
+            $api->post('upload/img', 'UploadController@store')
+                ->name('api.upload.img');
+
         });
 
         // 需要验证

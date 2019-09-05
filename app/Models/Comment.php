@@ -24,8 +24,10 @@ class Comment extends Model
         'content',
         'post_id',
         'parent',
-        'upload_id'
+        'upload_id',
+        'upload_uuid'
     ];
+
 
     public function post()
     {
@@ -35,7 +37,7 @@ class Comment extends Model
     /**
      * Get the upload record associated with the post.
      */
-    public function upload_id()
+    public function upload()
     {
         return $this->hasOne(Upload::class, 'id', 'upload_id');
     }

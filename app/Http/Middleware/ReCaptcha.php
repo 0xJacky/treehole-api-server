@@ -9,6 +9,11 @@ use Symfony\Component\HttpFoundation\Response;
 class ReCaptcha
 {
 
+    /**
+     * @var Client
+     */
+    private $client;
+
     public function __construct()
     {
         $this->client
