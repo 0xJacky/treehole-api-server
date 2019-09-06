@@ -27,10 +27,7 @@ class PostController extends Controller
 
         $comments['root'] = [];
 
-        //$comments['children'] = $post->getComments();
-        $c = Comment::where('post_id', $post->id)
-            ->with('upload')
-            ->get();
+        $comments['children'] = $post->getComments();
 
         if (isset($comments['children'][''])) {
             $comments['root'] = $comments['children'][''];

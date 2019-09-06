@@ -54,6 +54,11 @@ class Post extends Model
         return $this->hasMany(Comment::class);
     }
 
+    public function getComments()
+    {
+        return $this->comments()->get()->groupBy('parent');
+    }
+
     /**
      * Get the upload record associated with the post.
      */
