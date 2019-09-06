@@ -87,7 +87,7 @@ class PostController extends Controller
         if ($request->has('category')) {
             $posts = $posts->where('category_id', $request['category']);
         }
-        $posts = $posts->paginate(10);
+        $posts = $posts->paginate(12);
 
         return response()->json($posts, Response::HTTP_OK);
     }
