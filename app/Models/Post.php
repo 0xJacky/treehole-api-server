@@ -61,4 +61,5 @@ class Post extends Model
     {
         return $this->hasOne(Upload::class, 'id', 'upload_id');
     }
+
 }

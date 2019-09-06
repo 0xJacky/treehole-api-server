@@ -32,23 +32,11 @@ class PostController extends Controller
             ->with('upload')
             ->get();
 
-        $domain = config('aliyun.domain');
-
-        foreach ($c as $comment) {
-            if ($comment->upload_id) {
-                $comment->upload->url = $domain . $comment->upload->oss_path . '!article';
-            }
-            $comments['children'][$comment->parent][] = $comment;
-        }
-
-
         if (isset($comments['children'][''])) {
             $comments['root'] = $comments['children'][''];
             unset($comments['children']['']);
         }
-        if ($post->upload_id) {
-            $post->upload->url = config('aliyun.domain') . $post->upload->oss_path . '!article';
-        }
+
         $post['comments'] = $comments;
 
         return response()->json($post, Response::HTTP_OK);
@@ -96,15 +84,15 @@ class PostController extends Controller
 
     public function get_list(Request $request): JsonResponse
     {
-        $data = Post::with('category', 'upload')
+        $posts = Post::with('category', 'upload')
             ->orderBy('created_at', 'desc');
 
         if ($request->has('category')) {
-            $data = $data->where('category_id', $request['category']);
+            $posts = $posts->where('category_id', $request['category']);
         }
-        $data = $data->paginate(10);
+        $posts = $posts->paginate(10);
 
-        return response()->json($data, Response::HTTP_OK);
+        return response()->json($posts, Response::HTTP_OK);
     }
 
 }
