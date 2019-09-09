@@ -14,7 +14,7 @@ class FavourController extends Controller
     {
         $this->validate($request, [
             'post_id' => 'sometimes|required|uuid',
-            'comment_id' => 'sometimes|required|uuid'
+            'comment_id' => 'sometimes|required|uuid',
         ]);
 
         if ($request->has('post_id')) {
@@ -26,9 +26,14 @@ class FavourController extends Controller
         }
 
         $object->likes = $object->likes + 1;
+        if ($request['o']) {
+            $object->dislikes = $object->dislikes - 1;
+        }
         $object->save();
 
-        return response()->json(['message' => '点赞成功', 'likes' => $object->likes], Response::HTTP_OK);
+        return response()->json(['message' => '点赞成功',
+            'likes' => $object->likes,
+            'dislikes' => $object->dislikes], Response::HTTP_OK);
 
     }
 
@@ -48,9 +53,14 @@ class FavourController extends Controller
         }
 
         $object->dislikes = $object->dislikes + 1;
+        if ($request['o']) {
+            $object->likes = $object->likes - 1;
+        }
         $object->save();
 
-        return response()->json(['message' => '点赞成功', 'dislikes' => $object->dislikes], Response::HTTP_OK);
+        return response()->json(['message' => '点踩成功',
+            'likes' => $object->likes,
+            'dislikes' => $object->dislikes], Response::HTTP_OK);
 
     }
 }
