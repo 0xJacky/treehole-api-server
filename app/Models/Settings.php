@@ -7,6 +7,7 @@ use Webpatser\Uuid\Uuid;
 
 class Settings extends Model
 {
+
     public $incrementing = false;
     public static function boot()
     {
@@ -15,5 +16,12 @@ class Settings extends Model
             $model->id = (string) Uuid::generate(4);
         });
     }
-    //
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'notice'
+    ];
 }

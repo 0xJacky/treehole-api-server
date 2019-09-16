@@ -63,6 +63,14 @@ $api->version('v1', [
 
         // 需要验证
         $api->group(['middleware' => 'api.auth'], function ($api) {
+            // 获取设置
+            $api->get('settings', 'SettingsController@get')
+                ->name('api.auth.settings.get');
+
+            // 保存设置
+            $api->post('settings', 'SettingsController@store')
+                ->name('api.auth.settings.post');
+
             // bot 发表文章
             $api->post('bot/post', 'PostController@store')
                 ->name('api.auth.bot.post');

@@ -12,6 +12,7 @@
         "aliyuncs/oss-sdk-php": "^2.3",
         "barryvdh/laravel-cors": "^0.11.4",
         "dingo/api": "^2",
+        "doctrine/dbal": "^2.9",
         "emadadly/laravel-uuid": "^1.2",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "~6.0",

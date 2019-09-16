@@ -2,22 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1f1a379-2067-4d73-ad68-3bb030c1aa49" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Handler/ImageUploadHandler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/UploadController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/aliyun.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_09_05_161806_delete_field_of_uploads.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_09_05_164923_add_field_to_posts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/SettingsController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_09_16_155225_change_settings.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/treehold.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/treehold.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/CommentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/CommentController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/FrontendController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/FrontendController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/PostController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/ReCaptcha.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/ReCaptcha.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Comment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Post.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Upload.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Upload.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Settings.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
@@ -144,6 +135,9 @@
       <path value="$PROJECT_DIR$/vendor/asm89/stack-cors" />
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-cors" />
       <path value="$PROJECT_DIR$/vendor/aliyuncs/oss-sdk-php" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
     </include_path>
   </component>
   <component name="ProjectId" id="1Q81UgecgfmS80suas9T9IlFEi1" />
@@ -200,7 +194,11 @@
       <workItem from="1567137427657" duration="999000" />
       <workItem from="1567138804215" duration="14126000" />
       <workItem from="1567162969529" duration="52912000" />
-      <workItem from="1567663353732" duration="13515000" />
+      <workItem from="1567663353732" duration="14135000" />
+      <workItem from="1567698270889" duration="151000" />
+      <workItem from="1567743022945" duration="5185000" />
+      <workItem from="1567954802341" duration="1600000" />
+      <workItem from="1568551061114" duration="4856000" />
     </task>
     <servers />
   </component>
