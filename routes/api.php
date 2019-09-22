@@ -35,14 +35,6 @@ $api->version('v1', [
         $api->get('post', 'PostController@get')
             ->name('api.post.get');
 
-        // 点赞
-        $api->post('favour/like', 'FavourController@like')
-            ->name('api.favour.like');
-
-        // 点踩
-        $api->post('favour/dislike', 'FavourController@dislike')
-            ->name('api.favour.dislike');
-
         // reCAPTCHA 保护
         $api->group(['middleware' => 'recaptcha'], function ($api) {
             // 发表文章
@@ -59,6 +51,14 @@ $api->version('v1', [
 
             $api->post('upload/img', 'UploadController@store')
                 ->name('api.upload.img');
+
+            // 点赞
+            $api->post('favour/like', 'FavourController@like')
+                ->name('api.favour.like');
+
+            // 点踩
+            $api->post('favour/dislike', 'FavourController@dislike')
+                ->name('api.favour.dislike');
         });
 
         // 需要验证
