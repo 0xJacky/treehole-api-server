@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1f1a379-2067-4d73-ad68-3bb030c1aa49" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/SettingsController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_09_16_155225_change_settings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/treehold.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/treehold.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/FrontendController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/FrontendController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Settings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -148,7 +139,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers/Api" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
@@ -198,7 +189,10 @@
       <workItem from="1567698270889" duration="151000" />
       <workItem from="1567743022945" duration="5185000" />
       <workItem from="1567954802341" duration="1600000" />
-      <workItem from="1568551061114" duration="4856000" />
+      <workItem from="1568551061114" duration="5039000" />
+      <workItem from="1569129584472" duration="20000" />
+      <workItem from="1569129608209" duration="122000" />
+      <workItem from="1569129747790" duration="6000" />
     </task>
     <servers />
   </component>
