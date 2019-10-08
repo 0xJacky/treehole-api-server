@@ -19,7 +19,7 @@ class FrontendController extends Controller
         $settings = Settings::first();
         $data['notice'] = $settings->notice;
 
-        $data['categories'] = Category::orderBy('created_at', 'asc')->get();
+        $data['categories'] = Category::orderBy('order', 'asc')->get();
 
         $data['posts'] = Post::with('category', 'upload')
             ->orderBy('created_at', 'desc')

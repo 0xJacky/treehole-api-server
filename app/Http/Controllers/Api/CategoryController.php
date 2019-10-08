@@ -14,7 +14,7 @@ class CategoryController extends Controller
 
     public function get_list(Category $category): JsonResponse
     {
-        $data = $category->orderBy('created_at', 'asc')->get();
+        $data = $category->orderBy('order', 'asc')->get();
 
         return response()->json($data, Response::HTTP_OK);
     }

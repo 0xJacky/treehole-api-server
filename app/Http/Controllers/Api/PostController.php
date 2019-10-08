@@ -3,7 +3,9 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Category;
 use App\Models\Comment;
+use App\Models\Settings;
 use Dingo\Api\Routing\Helpers;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\JsonResponse;
@@ -22,14 +24,21 @@ class PostController extends Controller
         $this->validate($request, [
             'id' => 'required|uuid'
         ]);
+
         $post = Post::with('category', 'upload')
             ->find($request['id']);
+
+        // 访问量
+        $post->visits++;
+        $post->save();
 
         $comments['root'] = [];
 
         $comments['children'] = Comment::where('post_id', $post->id)
             ->with('upload')
             ->get()->groupBy('parent');
+
+        $comments['total'] = count($comments['children']);
 
         if (isset($comments['children'][''])) {
             $comments['root'] = $comments['children'][''];
@@ -91,7 +100,16 @@ class PostController extends Controller
         }
         $posts = $posts->paginate(12);
 
-        return response()->json($posts, Response::HTTP_OK);
+        if ($request->has('init') && $request['init'] == true) {
+            $settings = Settings::first();
+            $data['notice'] = $settings->notice;
+
+            $data['categories'] = Category::orderBy('created_at', 'asc')->get();
+        }
+
+        $data['posts'] = $posts;
+
+        return response()->json($data, Response::HTTP_OK);
     }
 
 }

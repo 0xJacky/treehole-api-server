@@ -15,6 +15,7 @@ class FavourController extends Controller
         $this->validate($request, [
             'post_id' => 'sometimes|required|uuid',
             'comment_id' => 'sometimes|required|uuid',
+            'rollback' => 'required'
         ]);
 
         if ($request->has('post_id')) {
@@ -26,7 +27,7 @@ class FavourController extends Controller
         }
 
         $object->likes = $object->likes + 1;
-        if ($request['o']) {
+        if ($request['rollback'] === 'true') {
             $object->dislikes = $object->dislikes - 1;
         }
         $object->save();
@@ -41,7 +42,8 @@ class FavourController extends Controller
     {
         $this->validate($request, [
             'post_id' => 'sometimes|required|uuid',
-            'comment_id' => 'sometimes|required|uuid'
+            'comment_id' => 'sometimes|required|uuid',
+            'rollback' => 'required'
         ]);
 
         if ($request->has('post_id')) {
@@ -53,7 +55,7 @@ class FavourController extends Controller
         }
 
         $object->dislikes = $object->dislikes + 1;
-        if ($request['o']) {
+        if ($request['rollback'] === 'true') {
             $object->likes = $object->likes - 1;
         }
         $object->save();
