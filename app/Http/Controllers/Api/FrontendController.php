@@ -28,4 +28,12 @@ class FrontendController extends Controller
         return response()->json($data, Response::HTTP_OK);
     }
 
+    public function about(): JsonResponse
+    {
+        $settings = Settings::first();
+        $data['about'] = $settings->about;
+
+        return response()->json($data, Response::HTTP_OK);
+    }
+
 }

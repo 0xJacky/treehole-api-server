@@ -22,17 +22,20 @@ class CategoryController extends Controller
     public function store(Request $request, Category $category): JsonResponse
     {
         $this->validate($request, [
-            'name' => 'required'
+            'name' => 'required',
+            'order' => 'required'
         ]);
 
         if ($request->has('id')) {
             $c = $category->find($request['id']);
             $c->name = $request['name'];
+            $c->order = (int)$request['order'];
             $c->save();
             return response()->json(['msg' => '保存成功'], Response::HTTP_OK);
         } else {
             $data = $category->create([
-                'name' => $request['name']
+                'name' => $request['name'],
+                'order' => (int)$request['order']
             ]);
             return response()->json(['id' => $data['id']], Response::HTTP_CREATED);
         }

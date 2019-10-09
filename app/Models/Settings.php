@@ -22,6 +22,6 @@ class Settings extends Model
      * @var array
      */
     protected $fillable = [
-        'notice'
+        'notice', 'about'
     ];
 }

@@ -23,6 +23,10 @@ $api->version('v1', [
         $api->get('frontend/home', 'FrontendController@home')
             ->name('api.frontend.home');
 
+        // 获取首页
+        $api->get('about', 'FrontendController@about')
+            ->name('api.frontend.about');
+
         // 获取分类列表
         $api->get('categories', 'CategoryController@get_list')
             ->name('api.categories.list');
@@ -74,6 +78,18 @@ $api->version('v1', [
             // bot 发表文章
             $api->post('bot/post', 'PostController@store')
                 ->name('api.auth.bot.post');
+
+            // 添加用户
+            $api->put('user', 'UserController@store')
+                ->name('api.auth.add_user');
+
+            // 删除用户
+            $api->delete('user', 'UserController@destroy')
+                ->name('api.auth.delete_user');
+
+            // 获取用户列表
+            $api->get('users', 'UserController@get_list')
+                ->name('api.auth.get_users');
 
             // 获取用户信息
             $api->get('user', 'UserController@info')
