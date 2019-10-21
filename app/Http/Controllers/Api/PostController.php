@@ -109,8 +109,8 @@ class PostController extends Controller
 
         $data['posts'] = $posts;
 
-
-
+        return response()->json($data, Response::HTTP_OK);
+        
     }
 
 }
