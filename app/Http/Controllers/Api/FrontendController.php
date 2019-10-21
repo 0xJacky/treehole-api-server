@@ -23,7 +23,7 @@ class FrontendController extends Controller
 
         $data['posts'] = Post::with('category', 'upload')
             ->orderBy('created_at', 'desc')
-            ->paginate(12);
+            ->paginate(10);
 
         return response()->json($data, Response::HTTP_OK);
     }
