@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Comment;
@@ -38,13 +38,12 @@ class PostController extends Controller
             ->with('upload')
             ->get()->groupBy('parent');
 
-        $comments['total'] = count($comments['children']);
-
         if (isset($comments['children'][''])) {
             $comments['root'] = $comments['children'][''];
             unset($comments['children']['']);
         }
 
+        $post['comments_total'] = $post['comments'];
         $post['comments'] = $comments;
 
         return response()->json($post, Response::HTTP_OK);

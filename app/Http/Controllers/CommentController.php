@@ -1,11 +1,12 @@
 <?php
 
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
 
 use App\Handler\ImageUploadHandler;
 use App\Models\Comment;
+use App\Models\Post;
 use Dingo\Api\Routing\Helpers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -37,6 +38,10 @@ class CommentController extends Controller
 
         $data = Comment::create($data);
 
+        $post = Post::find($request['post_id']);
+        $post->comments++;
+        $post->save();
+
         return response()->json([
             'id' => $data['id'],
             'upload_uuid' => $data['upload_uuid']
@@ -53,10 +58,17 @@ class CommentController extends Controller
 
         if ($this->user()) {
             $comment = Comment::find($request['id']);
+
+            $post = Post::find($comment->post_id);
+            $post->comments--;
+            $post->save();
+
             if ($comment->upload_id) {
                 $uploader->delete($comment->upload_id);
             }
+
             $comment->delete();
+            
         } else {
             return response()->json(['msg' => '无权访问'], Response::HTTP_FORBIDDEN);
         }
